@@ -1,0 +1,13 @@
+- name: start Nestjs container
+  hosts: all
+  remote_user: root
+
+  tasks:
+    - name: Create NestJS container
+      docker_container:
+        name: nestjs
+        image: barneotech/email-service:main
+        ports:
+          - "8080:3000"
+
+
