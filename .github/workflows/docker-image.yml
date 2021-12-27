@@ -5,7 +5,13 @@
 
 name: Publish Docker image
 
+
 on:
+
+#trigger action by push to main
+  push:
+    branches: [ main ]
+#trigger action by publish new release
   release:
     types: [published]
 
