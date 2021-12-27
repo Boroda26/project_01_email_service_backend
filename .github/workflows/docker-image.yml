@@ -11,7 +11,7 @@ on:
 #trigger action by push to main
   push:
     branches: [ main ]
-#trigger action by publish new release
+#trigger action by publish new releases
   release:
     types: [published]
 
