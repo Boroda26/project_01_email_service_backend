@@ -13,14 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_HUB_NAME}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_HUB_PASS}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag email-service:$(date +%s)
-    - name: Docker Push
-      run: docker push ${{secrets.DOCKER_HUB_NAME}}/email-service
+        - uses: actions/checkout@v2
+          name: Check out code
+
+        - uses: mr-smithers-excellent/docker-build-push@v5
+          name: Build & push Docker image
+          with:
+            image: email-service
+            tags: v1, latest
+            registry: hub.docker.com
+            dockerfile: Dockerfile
+            username: ${{ secrets.DOCKER_HUB_NAME }}
+            password: ${{ secrets.DOCKER_HUB_PASS }}
