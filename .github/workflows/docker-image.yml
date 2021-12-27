@@ -8,7 +8,7 @@ name: Publish Docker image
 
 on:
 
-#trigger action by push to main
+#trigger action by push to main branch
   push:
     branches: [ main ]
 #trigger action by publish new releases
