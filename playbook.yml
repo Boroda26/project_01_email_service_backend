@@ -30,8 +30,7 @@
       docker_container:
         name: nestjs
         image: barneotech/email-service:main
-        state: present
-        recreate: yes
+        restart: yes
         ports:
           - "8080:3001"
 
