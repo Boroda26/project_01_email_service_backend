@@ -50,7 +50,7 @@ jobs:
           # Required, playbook filepath
           playbook: playbook.yml
           # Optional, directory where playbooks live
-          directory: ./
+          directory: .
           # Optional, SSH private key
           key: ${{secrets.NEST_SHH_PK}}
           # Optional, literal inventory file contents
