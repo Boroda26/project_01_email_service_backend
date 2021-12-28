@@ -30,6 +30,7 @@
       docker_container:
         name: nestjs
         image: barneotech/email-service:main
+        nocache: yes
         recreate: yes
         restart: yes
         ports:
