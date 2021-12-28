@@ -26,9 +26,11 @@
         username: barneotech
         password: VPhS2emEpMtcQJFJwHQyF966
 
-    - name: pull an image
+    - name: Remove image
       docker_image:
-        name: barneotech/email-service:main
+        state: absent
+        name: barneotech/email-service
+        tag: main
 
     - name: Create NestJS container
       docker_container:
