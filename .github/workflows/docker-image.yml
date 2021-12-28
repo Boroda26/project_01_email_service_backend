@@ -42,3 +42,35 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: playbook.yml
+          # Optional, directory where playbooks live
+          directory: ./
+          # Optional, SSH private key
+#          key: ${{secrets.SSH_PRIVATE_KEY}}
+          # Optional, literal inventory file contents
+          inventory: |
+            all:
+              hosts:
+                bts:
+                   ansible_host: "5.188.80.252"
+                   ansible_ssh_private_key_file: "~/.ssh/id_rsa"
+                   ansible_sudo_pass: LyAMHFM4TjSwwCGgnnCc6QqJ
+
+          # Optional, SSH known hosts file content
+          # known_hosts: .known_hosts
+          # Optional, encrypted vault password
+          # vault_password: ${{secrets.VAULT_PASSWORD}}
+          # Optional, galaxy requirements filepath
+          # requirements: galaxy-requirements.yml
+          # Optional, additional flags to pass to ansible-playbook
+#          options: |
+#            --inventory ~/
+#            --limit group1
+#            --extra-vars hello=there
+#            --verbose
