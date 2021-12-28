@@ -31,6 +31,6 @@
         name: nestjs
         image: barneotech/email-service:main
         ports:
-          - "8080:3000"
+          - "8080:3001"
 
 
