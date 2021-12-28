@@ -33,6 +33,6 @@
         recreate: yes
         restart: yes
         ports:
-          - "8080:3001"
+          - "8080:3000"
 
 
