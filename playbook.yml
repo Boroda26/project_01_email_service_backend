@@ -29,6 +29,7 @@
 
     - name: update image
       docker_image:
+        name: barneotech/email-service:main
         repository: barneotech/email-service
         tag: main
         state: present
