@@ -29,7 +29,7 @@
 
     - name: update image
       docker_image:
-        name: barneotech/email-service
+        repository: barneotech/email-service
         tag: main
         state: present
         force: true
