@@ -35,7 +35,7 @@
         restart: yes
         ports:
           - "8080:3000"
-          -
+
     - name: Prune unused images
       docker_prune:
 #        containers: yes
