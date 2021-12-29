@@ -26,24 +26,23 @@
         username: barneotech
         password: VPhS2emEpMtcQJFJwHQyF966
 
-
-    - name: update image
-      docker_image:
-        name: barneotech/email-service:main
-        repository: barneotech/email-service
-        tag: main
-        state: present
-        force: true
-
     - name: Create NestJS container
       docker_container:
         name: nestjs
         image: barneotech/email-service:main
-#        pull: yes
+        pull: yes
         recreate: yes
         restart: yes
         ports:
           - "8080:3000"
+          -
+    - name: Prune unused images
+      docker_prune:
+#        containers: yes
+        images: yes
+#        networks: yes
+#        volumes: yes
+        builder_cache: yes
 
 
 
