@@ -50,9 +50,9 @@
 #        builder_cache: yes
 
     - name: Copy file
-        copy:
-          src: "{{ playbook_dir }}/docker/docker-compose-01-backend.yml"
-          dest: "/home/barneo-tech/projects/project_01_email_service/dev/backend/docker-compose.yml"
+      copy:
+        src: "{{ playbook_dir }}/docker/docker-compose-01-backend.yml"
+        dest: "/home/barneo-tech/projects/project_01_email_service/dev/backend/docker-compose.yml"
 
 
     - name: Tear down existing services
