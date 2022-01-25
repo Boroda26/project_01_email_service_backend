@@ -62,12 +62,12 @@
 
 
     - name: Prune unused images
-        docker_prune:
-          containers: yes
-          images: yes
-#         networks: yes
-#         volumes: yes
-          builder_cache: yes
+      docker_prune:
+        containers: yes
+        images: yes
+#       networks: yes
+#       volumes: yes
+        builder_cache: yes
 
     - name: Create and start services
       docker_compose:
