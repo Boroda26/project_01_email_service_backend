@@ -16,7 +16,7 @@ on:
 #     - 'app/**'
 
 #    branches: [ main ]
-#trigger action by publish new releases
+#trigger action by publish new  releases
   release:
     types: [published]
 
