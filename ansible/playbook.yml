@@ -49,6 +49,11 @@
 ##        volumes: yes
 #        builder_cache: yes
 
+    - name: Creates directory
+      file:
+        path: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
+        state: directory
+
     - name: Copy file
       copy:
         src: "/home/runner/work/project_01_email_service_backend/project_01_email_service_backend/docker/docker-compose-01-backend.yml"
