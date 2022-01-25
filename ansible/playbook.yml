@@ -31,6 +31,7 @@
         username: "{{ DOCKER_HUB_BARNEO_NAME }}"
         password: "{{ DOCKER_HUB_BARNEO_PASS }}"
 
+
 #    - name: Create NestJS container
 #      docker_container:
 #        name: nestjs
@@ -41,13 +42,7 @@
 #        ports:
 #          - "8081:3000"
 #
-#    - name: Prune unused images
-#      docker_prune:
-##        containers: yes
-#        images: yes
-##        networks: yes
-##        volumes: yes
-#        builder_cache: yes
+
 
     - name: Creates directory
       file:
@@ -64,6 +59,15 @@
       docker_compose:
         project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
         state: absent
+
+
+    - name: Prune unused images
+        docker_prune:
+          containers: yes
+          images: yes
+#         networks: yes
+#         volumes: yes
+          builder_cache: yes
 
     - name: Create and start services
       docker_compose:
