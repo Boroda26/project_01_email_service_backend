@@ -62,7 +62,7 @@
 
     - name: Tear down existing services
       docker_compose:
-        project_src: .
+        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
         state: absent
 
     - name: Create and start services
