@@ -7,11 +7,13 @@ name: Publish Docker image
 
 
 on:
+  push:
+    branches: [ main ]
 
 #trigger action by push to branch: main
-  push:
-    paths:
-     - 'app/**'
+#  push:
+#    paths:
+#     - 'app/**'
 
 #    branches: [ main ]
 #trigger action by publish new releases
@@ -22,6 +24,9 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    env:
+      DOCKER_HUB_BARNEO_NAME: '${{ secrets.DOCKER_HUB_BARNEO_NAME }}'
+      DOCKER_HUB_BARNEO_PASS: '${{ secrets.DOCKER_HUB_BARNEO_PASS }}'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -29,8 +34,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
-          username: ${{ secrets.DOCKER_HUB_NAME }}
-          password: ${{ secrets.DOCKER_HUB_PASS }}
+          username: ${{ secrets.DOCKER_HUB_BARNEO_NAME }}
+          password: ${{ secrets.DOCKER_HUB_BARNEO_PASS }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -42,7 +47,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ./app
-          file: ./app/Dockerfile
+          file: ./docker/Dockerfile
           no-cache: true
           push: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -55,16 +60,16 @@ jobs:
           # Required, playbook filepath
           playbook: playbook.yml
           # Optional, directory where playbooks live
-          directory: ./app
+          directory: ./ansible/
           # Optional, SSH private key
-          key: ${{secrets.NEST_SHH_PK}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
           # Optional, literal inventory file contents
           inventory: |
             all:
               hosts:
-                bts:
-                   ansible_host: "5.188.80.252"
-                   ansible_sudo_pass: LyAMHFM4TjSwwCGgnnCc6QqJ
+                barneo-tech:
+                   ansible_host: ${{secrets.IP_SELECTEL_SERVER}}
+ #                 ansible_sudo_pass: LyAMHFM4TjSwwCGgnnCc6QqJ
 
           # Optional, SSH known hosts file content
           # known_hosts: .known_hosts
