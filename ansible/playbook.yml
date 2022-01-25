@@ -68,7 +68,7 @@
       register: output
 
 
-    - name: Prune unused images
+    - name: Prune unused containers
       docker_prune:
         containers: yes
 #       networks: yes
