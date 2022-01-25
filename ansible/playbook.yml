@@ -61,11 +61,11 @@
 #        state: absent
 
     - name: Stop all services
-        docker_compose:
-          project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
-          build: no
-          stopped: yes
-        register: output
+      docker_compose:
+        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
+        build: no
+        stopped: yes
+      register: output
 
 
     - name: Prune unused images
