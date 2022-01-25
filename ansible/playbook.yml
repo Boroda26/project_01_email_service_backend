@@ -9,22 +9,22 @@
 
 
   tasks:
-    - name: Install Docker
-      apt:
-       update_cache: yes
-       name: docker.io
-
-    - name: Install Docker-Compose
-      apt:
-       name: docker-compose
-
-    - name: Install Python Module
-      apt:
-       name: python3-pip
-
-    - name: Install Python Docker-Compose
-      pip:
-       name: docker-compose
+#    - name: Install Docker
+#      apt:
+#       update_cache: yes
+#       name: docker.io
+#
+#    - name: Install Docker-Compose
+#      apt:
+#       name: docker-compose
+#
+#    - name: Install Python Module
+#      apt:
+#       name: python3-pip
+#
+#    - name: Install Python Docker-Compose
+#      pip:
+#       name: docker-compose
 
     - name: Log into DockerHub
       docker_login:
