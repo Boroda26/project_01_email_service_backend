@@ -79,22 +79,22 @@
       docker_prune:
         images: yes
 
-    - name: Create and start services
-      docker_compose:
-        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
-      register: output
-
-    - debug:
-        var: output
-
-    - name: Run `docker-compose up` again
-      docker_compose:
-        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
-        build: no
-      register: output
-
-    - debug:
-        var: output
+#    - name: Create and start services
+#      docker_compose:
+#        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
+#      register: output
+#
+#    - debug:
+#        var: output
+#
+#    - name: Run `docker-compose up` again
+#      docker_compose:
+#        project_src: "/home/barneo-tech/projects/project_01_email_service/dev/backend"
+#        build: no
+#      register: output
+#
+#    - debug:
+#        var: output
 
 
 
