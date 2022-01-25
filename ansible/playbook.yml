@@ -75,9 +75,11 @@
 #       volumes: yes
         builder_cache: yes
 
-    - name: Prune unused images
+    - name: Clean up Docker images
       docker_prune:
         images: yes
+        images_filters:
+          dangling: false
 
 #    - name: Create and start services
 #      docker_compose:
