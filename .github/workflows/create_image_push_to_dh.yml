@@ -10,7 +10,7 @@ on:
   push:
     branches: [ main ]
     paths-ignore:
-      - 'nginx'
+      - 'nginx/**'
 
 #trigger action by push to branch: main
 #  push:
