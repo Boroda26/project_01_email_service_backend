@@ -1,0 +1,26 @@
+- name: start Nestjs container
+  hosts: all
+  remote_user: barneo-tech
+  become: true
+  vars:
+    - user: barneo-tech
+    - DOCKER_HUB_BARNEO_NAME: "{{ lookup('env','DOCKER_HUB_BARNEO_NAME') }}"
+    - DOCKER_HUB_BARNEO_PASS: "{{ lookup('env','DOCKER_HUB_BARNEO_PASS') }}"
+
+
+  tasks:
+    - name: Copy file
+      copy:
+        src: "/home/runner/work/project_01_email_service_backend/project_01_email_service_backend/nginx/project_01_email_service_backend.conf"
+        dest: "/var/lib/docker/volumes/barneo-tech_nginx_configs/_data/conf.d/project_01_email_service_backend.conf"
+
+    - name: nginx -s reload
+      community.docker.docker_container_exec:
+        container: nginx_global
+        command: sh -c "nginx -s reload"
+        chdir: /root
+      register: result
+
+
+
+

@@ -1,0 +1,39 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: update Nginx config
+
+on:
+  push:
+    paths:
+     - 'nginx/**'
+
+
+jobs:
+  update_nginx_config:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: playbook.yml
+          # Optional, directory where playbooks live
+          directory: ./nginx/
+          # Optional, SSH private key
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          # Optional, literal inventory file contents
+          inventory: |
+            all:
+              hosts:
+                barneo-tech:
+                   ansible_host: ${{secrets.IP_SELECTEL_SERVER}}
+
+
+
