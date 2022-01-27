@@ -6,7 +6,7 @@ services:
 #    expose:
 #      - "3000"
     ports:
-      - "127.0.0.1:8081:3000"
+      - "8081:3000"
     networks:
       - nginx_network
       - project_01_email_service_network
