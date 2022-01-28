@@ -3,8 +3,6 @@ services:
   project_01_email_service:
     image: barneotech/email-service:main
     container_name: 01_email_backend
-#    expose:
-#      - "3000"
     ports:
       - "8081:3000"
     networks:
