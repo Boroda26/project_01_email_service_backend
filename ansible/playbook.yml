@@ -54,6 +54,11 @@
         src: "/home/runner/work/project_01_email_service_backend/project_01_email_service_backend/docker/docker-compose-01-backend.yml"
         dest: "/home/barneo-tech/projects/project_01_email_service/dev/backend/docker-compose.yml"
 
+    - name: Copy file
+      copy:
+        src: "/home/runner/work/project_01_email_service_backend/project_01_email_service_backend/docker/.env"
+        dest: "/home/barneo-tech/projects/project_01_email_service/dev/backend/.env"
+
 
 #    - name: Tear down existing services
 #      docker_compose:
